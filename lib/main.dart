@@ -1,7 +1,10 @@
+import 'package:compra_tickets_evento_macro/infrastructure/datasources/events_db_datasource.dart';
+import 'package:compra_tickets_evento_macro/infrastructure/repositories/events_repository_impl.dart';
+import 'package:compra_tickets_evento_macro/presentation/providers/providers.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+//import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import 'presentation/config/app_router.dart';
@@ -19,10 +22,16 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
+  
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
+    final eventsRepository = EventsRespositoryImpl(EventsDbDatasource());
+    //import
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
@@ -37,6 +46,11 @@ class MyApp extends StatelessWidget {
       providers: [
         // Dummy provider temporal
         Provider(create: (_) => null),
+        //Provider para desplegar la informacion general del evento
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (context) => EventProvider(eventRepository: eventsRepository)
+          ),
       ],
 
 
