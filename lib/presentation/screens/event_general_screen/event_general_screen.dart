@@ -1,7 +1,10 @@
 import 'package:compra_tickets_evento_macro/presentation/providers/providers.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
+import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/custom_appbar.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/event_logo_row.dart';
+import 'package:compra_tickets_evento_macro/presentation/widgets/get_tickets_button.dart';
+import 'package:compra_tickets_evento_macro/presentation/widgets/recommendations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,12 +39,13 @@ class EventGeneralScreen extends StatelessWidget {
           } else if (snapshot.hasData) {
             // Una vez que los datos están disponibles
             final event = snapshot.data!;
-            final logoUrl = event.logo; // Obtener el logo del evento
+            final logoUrl = event.logo;
+            final Map<String,bool> recommendationsMap = event.recommendations; // Obtener el logo del evento
 
             return Column(
               children: [
                 EventLogoRow(logoUrl: logoUrl), // Usar la fila con el logo
-                // Otras partes de la interfaz, como la descripción, la ubicación, etc.
+                // Otras partes de la interfaz, como la descripción, la ubicación, etc. 
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -49,22 +53,21 @@ class EventGeneralScreen extends StatelessWidget {
                     children: [
                       Text(
                         event.name.toUpperCase(),
-                         style: const TextStyle(
-                          fontFamily: 'CormorantGaramond', // Aplicar la fuente
-                          fontSize: 20, // Tamaño del texto
-                          fontWeight: FontWeight.bold, // Hacerlo negrita
-                          color: AppTheme.textColor, 
-                        )
+                         style: ThemeStylesSettings.primaryTitle
                       ),
+                      const SizedBox(height: 1),
                       Text(
                         event.description,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: 'JosefinSans', // Mantener la fuente de la descripción
-                          fontSize: 16,
-                          color: AppTheme.textColor, // Color del texto según tu tema
-                        ),
+                        style: ThemeStylesSettings.secondaryText
                       ),
+                      const SizedBox(height: 16), // Espacio entre la descripción y el botón
+                      GetTicketsButton(
+                        onPressed: () {
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      Recommendations(recommendationsMap: recommendationsMap)
                     ],)
                 ),
                 // Agrega más widgets aquí según sea necesario

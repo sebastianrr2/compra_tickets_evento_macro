@@ -83,4 +83,12 @@ class ThemeStylesSettings {
     );
   }
 
+  static TextStyle secondaryTextBlack = const TextStyle(
+    fontFamily: 'JosefinSans',
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppTheme.black,
+    letterSpacing: 0.4,
+  );
+
 }

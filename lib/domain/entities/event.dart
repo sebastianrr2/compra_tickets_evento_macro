@@ -14,7 +14,8 @@ class Event {
   final String host;
   final String locationImage;
   final List<String> gallery;
-
+  final Map<String,bool> recommendations;
+  //la idea esque esten unas rec
   // Constructor GENERAL INFO
   Event({
     required this.id,
@@ -27,5 +28,6 @@ class Event {
     required this.host,
     required this.locationImage,
     required this.gallery,
+    required this.recommendations
   });
 }

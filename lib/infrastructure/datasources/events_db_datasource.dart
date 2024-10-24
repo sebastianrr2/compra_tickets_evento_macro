@@ -9,7 +9,7 @@ class EventsDbDatasource extends EventsDatasource{
   //Se inicializa esta simulacion para desplegar la pantalla general del evento
   Event demoEvent = Event(
         id: 0,
-        name: 'Concert XYZ', // Nombre del evento
+        name: 'Ultra music festival', // Nombre del evento
         logo: 'https://i.pinimg.com/originals/2a/2e/a5/2a2ea5fc5819d4b41541f36d21566d8d.png', // URL del logo
         description: 'The world premier electronic music festival, boasting elite DJs and un paralleled production located in the beautiful city of Miami', // Descripción del evento
         maxCapacity: 5000, // Capacidad máxima del evento
@@ -22,6 +22,10 @@ class EventsDbDatasource extends EventsDatasource{
           'https://example.com/gallery2.png',
           'https://example.com/gallery3.png',
         ], // Galería de imágenes del evento
+        recommendations: {
+          "trending": true,
+          "last tickets": true
+        }
       );
   
     EventsDbDatasource() {
