@@ -1,14 +1,15 @@
 import 'package:compra_tickets_evento_macro/presentation/providers/providers.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
-import 'package:compra_tickets_evento_macro/presentation/widgets/custom_appbar.dart';
-import 'package:compra_tickets_evento_macro/presentation/widgets/event_logo_row.dart';
-import 'package:compra_tickets_evento_macro/presentation/widgets/get_tickets_button.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/recommendations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../domain/entities/event.dart';
+import 'widgets/column_general_info.dart';
+import 'widgets/custom_appbar.dart';
+import 'widgets/event_logo_row.dart';
+import 'widgets/gallery.dart';
+import 'widgets/get_tickets_button.dart';
 
 class EventGeneralScreen extends StatelessWidget {
   static const String routerName = "event_general_screen";
@@ -41,37 +42,53 @@ class EventGeneralScreen extends StatelessWidget {
             final event = snapshot.data!;
             final logoUrl = event.logo;
             final Map<String,bool> recommendationsMap = event.recommendations; // Obtener el logo del evento
+            final List<String> galleryList = event.gallery;
 
-            return Column(
-              children: [
-                EventLogoRow(logoUrl: logoUrl), // Usar la fila con el logo
+            return SingleChildScrollView(
+              child:
                 // Otras partes de la interfaz, como la descripción, la ubicación, etc. 
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        event.name.toUpperCase(),
-                         style: ThemeStylesSettings.primaryTitle
-                      ),
-                      const SizedBox(height: 1),
-                      Text(
-                        event.description,
-                        textAlign: TextAlign.center,
-                        style: ThemeStylesSettings.secondaryText
-                      ),
-                      const SizedBox(height: 16), // Espacio entre la descripción y el botón
-                      GetTicketsButton(
-                        onPressed: () {
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      Recommendations(recommendationsMap: recommendationsMap)
-                    ],)
+                Column(
+                  children: [ Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        EventLogoRow(logoUrl: logoUrl), // Usar la fila con el logo
+                        Text(
+                          event.name.toUpperCase(),
+                           style: ThemeStylesSettings.primaryTitle
+                        ),
+                        const SizedBox(height: 1),
+                        Text(
+                          event.description,
+                          textAlign: TextAlign.center,
+                          style: ThemeStylesSettings.secondaryText
+                        ),
+                        const SizedBox(height: 16), // Espacio entre la descripción y el botón
+                        GetTicketsButton(
+                          onPressed: () {
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        Recommendations(recommendationsMap: recommendationsMap),
+                        const SizedBox(height: 10),
+                        // Aquí agregamos la nueva columna con la información general del evento
+                        ColumnGeneralInfo(
+                          maxCapacity: event.maxCapacity,
+                          date: event.date,
+                          location: event.location,
+                          host: event.host,
+                          locationImage: event.locationImage,
+                        ),
+                        const SizedBox(height: 10),
+                      ],),           
+                  ),
+                // Agrega la galería de imágenes
+                ImageGallery(
+                        imageUrls: galleryList
+                      ),],
                 ),
-                // Agrega más widgets aquí según sea necesario
-              ],
+                
             );
           } else {
             return const Center(child: Text('No data available'));

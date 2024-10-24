@@ -7,7 +7,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 60, // Aumentamos la altura del AppBar para dar más espacio a los íconos
+      toolbarHeight: 39, // Aumentamos la altura del AppBar para dar más espacio a los íconos
       automaticallyImplyLeading: false,
       centerTitle: true,
       title: Stack(
@@ -44,5 +44,5 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   // Definimos el tamaño preferido del AppBar
   @override
-  Size get preferredSize => const Size.fromHeight(70);
+  Size get preferredSize => const Size.fromHeight(39);
 }

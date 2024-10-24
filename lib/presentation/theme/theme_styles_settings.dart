@@ -91,4 +91,23 @@ class ThemeStylesSettings {
     letterSpacing: 0.4,
   );
 
+  static TextStyle secondaryTextGold = const TextStyle(
+    fontFamily: 'JosefinSans',
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppTheme.dullGold,
+    letterSpacing: 0.4,
+  );
+
+  static TextStyle secondaryTextTitleFont = const TextStyle(
+    fontFamily: 'CormorantGaramond',
+    fontSize: 15,
+    fontWeight: FontWeight.w900,
+    color: AppTheme.lightGray,
+    letterSpacing: 0.4,
+    
+  );
+
+
 }
+

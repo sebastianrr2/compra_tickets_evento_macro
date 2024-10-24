@@ -16,20 +16,19 @@ class Recommendations extends StatelessWidget {
     Widget trendingWidget = Container();
     if (recommendationsMap["trending"] == true) {
       trendingWidget = Container(
-        height: 20,
-        width: 100,
+        height: 12, // Reducido a la mitad
+        width: 52,  // Reducido a la mitad
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: AppTheme.trendingWeeblyOrange,
         ),
         child: Row(
           children: [
-            const Icon(Icons.fireplace_rounded, color: Colors.black, size: 16), // Ícono de fuego
-            const SizedBox(width: 5), // Espacio entre el ícono y el texto
+            const Icon(Icons.local_fire_department, color: Colors.black, size: 8), // Ícono de fuego
             Center(
               child: Text(
                 'Trending',
-                style: ThemeStylesSettings.secondaryTextBlack,
+                style: ThemeStylesSettings.secondaryTextBlack.copyWith(fontSize: 8), // Reducido el tamaño de fuente
               ),
             ),
           ],
@@ -41,20 +40,19 @@ class Recommendations extends StatelessWidget {
     Widget lastTicketsWidget = Container();
     if (recommendationsMap["last tickets"] == true) {
       lastTicketsWidget = Container(
-        height: 20,
-        width: 100,
+        height: 10, // Reducido a la mitad
+        width: 62, // Reducido a la mitad
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: AppTheme.lastTicketsLemonLime,
         ),
         child: Row(
           children: [
-            const Icon(Icons.hourglass_bottom_rounded, color: Colors.black, size: 16), // Ícono de reloj de arena
-            const SizedBox(width: 5), // Espacio entre el ícono y el texto
+            const Icon(Icons.hourglass_bottom_rounded, color: Colors.black, size: 8), // Ícono de reloj de arena
             Center(
               child: Text(
                 'Last Tickets',
-                style: ThemeStylesSettings.secondaryTextBlack,
+                style: ThemeStylesSettings.secondaryTextBlack.copyWith(fontSize: 8), // Reducido el tamaño de fuente
               ),
             ),
           ],
@@ -75,5 +73,6 @@ class Recommendations extends StatelessWidget {
     );
   }
 }
+
 
 

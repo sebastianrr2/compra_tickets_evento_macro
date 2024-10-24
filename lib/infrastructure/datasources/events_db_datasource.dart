@@ -15,12 +15,14 @@ class EventsDbDatasource extends EventsDatasource{
         maxCapacity: 5000, // Capacidad máxima del evento
         date: DateTime.now().add(const Duration(days: 30)), // Fecha del evento en 30 días a partir de hoy
         location: 'Bogotá, Colombia', // Ubicación del evento
-        host: 'EventCorp', // Anfitrión del evento
-        locationImage: 'https://example.com/location_image.png', // Imagen de la ubicación
+        host: '@EventCorp', // Anfitrión del evento
+        locationImage: 'https://www.rockymountainrep.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-01-at-11.20.18-AM.png', // Imagen de la ubicación
         gallery: [
-          'https://example.com/gallery1.png',
-          'https://example.com/gallery2.png',
-          'https://example.com/gallery3.png',
+          'https://th.bing.com/th/id/R.c651640f76594994ea70721362b90c93?rik=ZQYQ5hUOSAjFiA&pid=ImgRaw&r=0',
+          'https://th.bing.com/th/id/OIP.0BSL71ZSqCFIQSDgCYMJ8gHaE7?rs=1&pid=ImgDetMain',
+          'https://assets.simpleviewinc.com/simpleview/image/upload/crm/miamifl/ultra-music-festival-1440x9000_27cfc50f-5056-a36a-0bbcb1d9fc8f821a.jpg',
+          "https://th.bing.com/th/id/OIP.VMFWZP3M9Dr2O6ak3Eu0qgAAAA?rs=1&pid=ImgDetMain",
+          "https://imagez.tmz.com/image/3e/16by9/2023/03/23/3e5cac3bce2c4100bffc58ce7d6ec216_xl.jpg"
         ], // Galería de imágenes del evento
         recommendations: {
           "trending": true,

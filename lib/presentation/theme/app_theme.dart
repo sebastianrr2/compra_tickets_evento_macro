@@ -21,6 +21,7 @@ class AppTheme {
   static const Color oliveDrab              = Color(0XFF60941A);
   static const Color white                  = Color.fromARGB(255, 255, 255, 255);
   static const Color black                  = Color.fromARGB(255, 0, 0, 0);
+  static const Color divider                = Color(0XFF312E2D);
 
   /* Paleta de colores Map */
   static const Color trendingWeeblyOrange = Color(0XFFFF9A00);

@@ -16,7 +16,7 @@ class EventLogoRow extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.only(right: 20), // Espacio a la derecha
             child: const Divider(
-              thickness: 5, // Grosor de la línea
+              thickness: 2, // Grosor de la línea
               color:AppTheme.dullGold, // Color dorado
             ),
           ),
@@ -32,7 +32,7 @@ class EventLogoRow extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.only(left: 20), // Espacio a la izquierda
             child: const Divider(
-              thickness: 5, // Grosor de la línea
+              thickness: 2, // Grosor de la línea
               color: AppTheme.dullGold, // Color dorado
             ),
           ),
