@@ -24,9 +24,9 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    Icons.chevron_right, // Representa ">"
+                    Icons.arrow_forward_ios, // Representa ">"
                     color: AppTheme.lightGray,
-                    size: 40, // Tamaño del ícono
+                    size: 24, // Tamaño del ícono
                   ),
                   Icon(
                     Icons.star_rounded, // Ícono de estrella redondeada

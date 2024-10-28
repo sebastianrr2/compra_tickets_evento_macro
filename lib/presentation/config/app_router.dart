@@ -1,5 +1,5 @@
 import 'package:compra_tickets_evento_macro/presentation/screens/event_general_screen/event_general_screen.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section/select_section.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -20,8 +20,7 @@ final router = GoRouter(
         final eventId = int.parse(state.pathParameters['eventId']!); // Tomamos el parámetro de la URL
         return EventGeneralScreen(eventId: eventId); // Lo pasamos a la pantalla
       },
-
-      // Sub-rutas (opcional)
+      // Sub-rutas
       routes: [
         GoRoute(
           path: "get_tickets",

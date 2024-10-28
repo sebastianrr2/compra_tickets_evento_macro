@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import '../../../theme/theme.dart';
 
 class ColumnGeneralInfo extends StatelessWidget {
@@ -49,7 +49,7 @@ class ColumnGeneralInfo extends StatelessWidget {
                   children: [
                     const Icon(Icons.calendar_today, size: 15, color: AppTheme.feldgrau),
                     const SizedBox(width: 8),
-                    Text(_formatDate(date), style: ThemeStylesSettings.secondaryText), // Formato de fecha
+                    Text(_formatDate(date), style: ThemeStylesSettings.secondaryText),
                   ],
                 ),
                 const SizedBox(height: 3),
@@ -67,7 +67,7 @@ class ColumnGeneralInfo extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       host,
-                      style: ThemeStylesSettings.secondaryTextGold, // Color de host
+                      style: ThemeStylesSettings.secondaryTextGold,
                     ),
                   ],
                 ),
@@ -78,24 +78,26 @@ class ColumnGeneralInfo extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       "10 friends have tickets",
-                      style: ThemeStylesSettings.secondaryText, // Color de host
+                      style: ThemeStylesSettings.secondaryText,
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          // Parte derecha: Imagen
+          // Parte derecha: Imagen usando CachedNetworkImage
           Expanded(
             flex: 5, // Ajusta el tamaño al 30%
             child: Container(
               constraints: const BoxConstraints(
                 maxHeight: 200,
-                maxWidth: 200 // Altura máxima de la imagen (ajustar según sea necesario)
+                maxWidth: 200, // Altura máxima de la imagen (ajustar según sea necesario)
               ),
-              child: Image.network(
-                locationImage,
-                fit: BoxFit.cover, // Ajusta la imagen dentro del contenedor
+              child: CachedNetworkImage(
+                imageUrl: locationImage,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const CircularProgressIndicator(color: AppTheme.dullGold), // Indicador de carga
+                errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
               ),
             ),
           ),
@@ -104,6 +106,7 @@ class ColumnGeneralInfo extends StatelessWidget {
     );
   }
 }
+
 
 
 

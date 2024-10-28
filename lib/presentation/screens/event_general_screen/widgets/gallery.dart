@@ -1,7 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../../../theme/theme.dart';
 
 class ImageGallery extends StatelessWidget {
   final List<String> imageUrls; // Lista de URLs de imágenes
@@ -24,26 +23,27 @@ class ImageGallery extends StatelessWidget {
             children: [
               Expanded(child: Divider(color: AppTheme.divider)), // Espacio en blanco a la izquierda
               Text(
-                style:TextStyle(
-                    fontFamily: 'CormorantGaramond',
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: AppTheme.lightGray,
-                    letterSpacing: 0.4,),
-                'GALLERY', 
+                style: TextStyle(
+                  fontFamily: 'CormorantGaramond',
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.lightGray,
+                  letterSpacing: 0.4,
+                ),
+                'GALLERY',
               ),
               Expanded(child: Divider(color: AppTheme.divider)), // Espacio en blanco a la derecha
             ],
           ),
         ),
         // Collage de imágenes
-        ImageCollageWidget(imageUrls: imageUrls), // Reemplaza con tu widget de collage
+        ImageCollageWidget(imageUrls: imageUrls),
       ],
     );
   }
 }
 
-// Ejemplo de cómo podría verse el widget ImageCollageWidget
+// Widget de collage de imágenes
 class ImageCollageWidget extends StatelessWidget {
   final List<String> imageUrls;
 
@@ -60,11 +60,16 @@ class ImageCollageWidget extends StatelessWidget {
       ),
       itemCount: imageUrls.length,
       itemBuilder: (context, index) {
-        return Image.network(
-          imageUrls[index],
-          fit: BoxFit.cover, // Ajusta la imagen
+        return CachedNetworkImage(
+          imageUrl: imageUrls[index],
+          fit: BoxFit.cover,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
+          ), // Indicador de carga
+          errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
         );
       },
     );
   }
 }
+

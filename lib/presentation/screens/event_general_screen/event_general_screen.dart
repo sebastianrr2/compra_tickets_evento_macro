@@ -3,6 +3,7 @@ import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/recommendations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../domain/entities/event.dart';
 import 'widgets/column_general_info.dart';
@@ -66,7 +67,7 @@ class EventGeneralScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16), // Espacio entre la descripción y el botón
                         GetTicketsButton(
-                          onPressed: () {
+                          onPressed: () { context.push('/event_general_screen/$eventId/get_tickets');
                           },
                         ),
                         const SizedBox(height: 10),

@@ -1,9 +1,10 @@
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/services.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 
-import "../screens.dart";
+
 
 
 
@@ -15,6 +16,8 @@ class SelectSectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+      appBar: CustomAppbar(),
+    );
   }
 }

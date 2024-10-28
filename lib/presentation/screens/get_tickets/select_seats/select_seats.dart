@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/services.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 
-import "../screens.dart";
+import "../../screens.dart";
 
 
 
