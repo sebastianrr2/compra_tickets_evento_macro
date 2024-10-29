@@ -12,4 +12,6 @@ abstract class SectionRepository {
 
   Future<String> getImageLocationSections();
 
+  Future<bool> isSectionAvailable(Section section);
+
 }

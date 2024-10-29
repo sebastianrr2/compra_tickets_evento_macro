@@ -1,20 +1,22 @@
 
 
-
+import 'package:compra_tickets_evento_macro/infrastructure/datasources/seats_db_datasource.dart';
 import 'package:compra_tickets_evento_macro/domain/datasources/sections_datasource.dart';
+import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
 import 'package:compra_tickets_evento_macro/domain/entities/section.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SectionsDbDatasource extends SectionsDatasource {
 
   late List<Section> demoSections;
 
+  SeatsDbDatasource datasourceSeats = SeatsDbDatasource();
+
   Section demoSection1 = Section(
     id: 0, 
     eventId: 0, 
     name: "Palco Garrix", 
-    maxCapacity: 10);
+    maxCapacity: 2);
 
   Section demoSection2 = Section(
     id: 1, 
@@ -74,16 +76,35 @@ class SectionsDbDatasource extends SectionsDatasource {
   }
 
   @override
-  Future<Section> getSectionById(int id) {
-    
-    throw UnimplementedError();
+  Future<Section> getSectionById(int id) async {
+    // Busca la sección por el id
+    try {
+      final section = demoSections.firstWhere((section) => section.id == id);
+      return section;
+    } catch (e) {
+      // Si no encuentra la sección, lanza un error
+      throw Exception('Section with id $id not found');
+    }
   }
 
   @override
-  Future<List<Section>> getSections(int eventId) {
-    
-    throw UnimplementedError();
+  Future<List<Section>> getSections(int eventId) async {
+    // Filtra las secciones por el eventId
+    final sections = demoSections.where((section) => section.eventId == eventId).toList();
+    return sections;
   }
+
+  @override
+  Future<bool> isSectionAvailable(Section section) async {
+    int id = section.id;
+    // Obtener la lista de asientos de la sección como un Future
+    List<Seat> seats = await datasourceSeats.getSeatsBySectionId(id);
+    // Cuenta los asientos ocupados usando `where` en un Iterable
+    int occupiedSeats = seats.where((seat) => seat.status == "occupied").length;
+    // Si el número de asientos ocupados es menor que la capacidad máxima, la sección está disponible
+    return occupiedSeats < section.maxCapacity;
+  }
+
 
   
 }

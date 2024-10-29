@@ -12,4 +12,6 @@ abstract class SectionsDatasource {
 
   Future<String> getImageLocationSections();
 
+  Future<bool> isSectionAvailable(Section section);
+
 }
