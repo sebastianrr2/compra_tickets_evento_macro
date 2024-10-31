@@ -1,6 +1,9 @@
 import 'package:compra_tickets_evento_macro/infrastructure/datasources/events_db_datasource.dart';
+import 'package:compra_tickets_evento_macro/infrastructure/datasources/sections_db_datasource.dart';
 import 'package:compra_tickets_evento_macro/infrastructure/repositories/events_repository_impl.dart';
+import 'package:compra_tickets_evento_macro/infrastructure/repositories/sections_repository_impl.dart';
 import 'package:compra_tickets_evento_macro/presentation/providers/providers.dart';
+import 'package:compra_tickets_evento_macro/presentation/providers/section_provider.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +34,7 @@ class MyApp extends StatelessWidget {
 
 
     final eventsRepository = EventsRespositoryImpl(EventsDbDatasource());
+    final sectionsRespository = SectionsRepositoryImpl(SectionsDbDatasource());
     //import
 
     SystemChrome.setSystemUIOverlayStyle(
@@ -51,6 +55,11 @@ class MyApp extends StatelessWidget {
           lazy: true,
           create: (context) => EventProvider(eventRepository: eventsRepository)
           ),
+        
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (context) => SectionProvider(sectionRepository: sectionsRespository)
+          )
       ],
 
 

@@ -49,7 +49,6 @@ class EventsDbDatasource extends EventsDatasource{
 
   @override
   Future<Event> getEventGeneralInfo(int id) async {
-    // TODO: implement getEventGeneralInfo with use of API or DB
     await Future.delayed(const Duration(seconds: 1)); 
     //retornamos el evento de demoEvents
     return getEventById(id);  
@@ -57,7 +56,6 @@ class EventsDbDatasource extends EventsDatasource{
 
   @override
   Future<List<Event>> getEvents() async {
-    // TODO: implement getEvents
     await Future.delayed(const Duration(seconds: 1)); 
     return demoEvents;
   }

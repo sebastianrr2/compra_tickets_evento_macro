@@ -1,5 +1,7 @@
 
 
+import 'dart:math';
+
 import 'package:compra_tickets_evento_macro/infrastructure/datasources/seats_db_datasource.dart';
 import 'package:compra_tickets_evento_macro/domain/datasources/sections_datasource.dart';
 import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
@@ -16,31 +18,31 @@ class SectionsDbDatasource extends SectionsDatasource {
     id: 0, 
     eventId: 0, 
     name: "Palco Garrix", 
-    maxCapacity: 2);
+    maxCapacity: 3);
 
   Section demoSection2 = Section(
     id: 1, 
     eventId: 0, 
     name: "Dance floor", 
-    maxCapacity: 10);
+    maxCapacity: 3);
 
   Section demoSection3 = Section(
     id: 2, 
     eventId: 0, 
     name: "We are your friends", 
-    maxCapacity: 10);
+    maxCapacity: 3);
 
   Section demoSection4 = Section(
     id: 3, 
     eventId: 0, 
     name: "Backstage", 
-    maxCapacity: 10);
+    maxCapacity: 3);
 
   Section demoSection5 = Section(
     id: 4, 
     eventId: 0, 
     name: "Palco beats", 
-    maxCapacity: 10);
+    maxCapacity: 3);
 
   
   SectionsDbDatasource(){
@@ -51,7 +53,7 @@ class SectionsDbDatasource extends SectionsDatasource {
   Future<String> getImageLocationSections() async {
     // Lógica para buscar la imagen que representan las secciones
     await Future.delayed(const Duration(milliseconds: 5)); 
-    String imagePath = 'assets/imagesEvents/SECTION_IMAGE.png'; // Ajusta la extensión según tu imagen
+    String imagePath = 'assets/demoImages/SECTION_IMAGE.png'; // Ajusta la extensión según tu imagen
     
     // Verifica que la imagen se carga correctamente
     try {
@@ -64,14 +66,17 @@ class SectionsDbDatasource extends SectionsDatasource {
 
   @override
   Future<List<double>> getPricing(int id) async {
-    //Logica para buscar el el minimo y maximo precio de las sillas correspodientes a la seccion
-    //Get precing basic logic;
-    /*get_seats_by_sectionid
-    get min price
-    get max price*/  
-    await Future.delayed(const Duration(milliseconds: 5)); 
-    double minPrice = 900000;
-    double maxPrice = 400000;
+    // Obtiene las sillas correspondientes a la sección por su id
+    List<Seat> seats = await datasourceSeats.getSeatsBySectionId(id);
+    
+    if (seats.isEmpty) {
+      throw Exception('No seats found for section with id $id');
+    }
+
+    // Encuentra el precio mínimo y máximo entre las sillas
+    double minPrice = seats.map((seat) => seat.price).reduce(min);
+    double maxPrice = seats.map((seat) => seat.price).reduce(max);
+
     return [minPrice, maxPrice];
   }
 

@@ -67,7 +67,7 @@ class EventGeneralScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16), // Espacio entre la descripción y el botón
                         GetTicketsButton(
-                          onPressed: () { context.push('/event_general_screen/$eventId/get_tickets');
+                          onPressed: () { context.push('/event_general_screen/$eventId/select_section');
                           },
                         ),
                         const SizedBox(height: 10),

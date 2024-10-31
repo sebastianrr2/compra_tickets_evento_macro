@@ -44,6 +44,7 @@ dependencies:
   intl: ^0.19.0
   cached_network_image: ^3.4.1
   path_provider: ^2.1.4
+  customizable_counter: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,7 @@ flutter:
     - assets/liquors/
     - assets/imagesCard/
     - assets/imagesEvents/
+    - assets/demoImages/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -42,4 +42,10 @@ class SectionProvider extends ChangeNotifier {
       'isAvailable': available,
     };
   }
+
+  //Method to get sections image 
+  Future<String> getImageSections() async {
+    final imageUrl = await sectionRepository.getImageLocationSections();
+    return imageUrl;
+  }
 }
