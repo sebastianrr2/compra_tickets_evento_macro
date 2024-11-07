@@ -96,7 +96,6 @@ class ColumnGeneralInfo extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: locationImage,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => const CircularProgressIndicator(color: AppTheme.dullGold), // Indicador de carga
                 errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
               ),
             ),

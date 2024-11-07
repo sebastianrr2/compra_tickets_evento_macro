@@ -1,6 +1,12 @@
+import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
+import 'package:compra_tickets_evento_macro/domain/entities/section.dart';
 import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/complete_ticket_counter.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/invoice_tickets.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/seat_number_container.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
+import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/custom_appbar.dart';
+import 'package:compra_tickets_evento_macro/presentation/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';
 
 class SelectSeatsScreen extends StatelessWidget {
@@ -9,6 +15,7 @@ class SelectSeatsScreen extends StatelessWidget {
   const SelectSeatsScreen({super.key, required this.sectionId});
 
   final int sectionId;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +26,11 @@ class SelectSeatsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: const CustomAppbar(),
-      body: Column(
-        children: [
-          // Full screen InteractiveViewer with image
-          InteractiveViewer(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Interactive image that will be hidden when scrolling to the bottom
+            InteractiveViewer(
               panEnabled: true,
               boundaryMargin: const EdgeInsets.all(100),
               minScale: 1.0,
@@ -32,43 +40,67 @@ class SelectSeatsScreen extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-          const SizedBox(height: 20),
-        
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildStatusIndicator(availableColor, "available"),
-                    const SizedBox(width: 16.0),
-                    _buildStatusIndicator(selectedColor, "selected"),
-                    const SizedBox(width: 16.0),
-                    _buildStatusIndicator(soldOutColor, "sold Out"),
-                  ],
-                ),
-                const SizedBox(height: 20), // Space between the row and the container
-                Container(
-                  height: 35,
-                  color: AppTheme.divider, // Background color of the Divider
-                  child: const Center(
-                    child: Text(
-                      'CHOOSE SEATS',
-                      style: TextStyle(
-                        fontFamily: 'CormorantGaramond',
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.lightGray,
-                        letterSpacing: 0.4,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 18), 
-                //COUNTER OF TICKETS
-                const CompleteTicketCounter()
-
+            const SizedBox(height: 14),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildStatusIndicator(availableColor, "available"),
+                const SizedBox(width: 16.0),
+                _buildStatusIndicator(selectedColor, "selected"),
+                const SizedBox(width: 16.0),
+                _buildStatusIndicator(soldOutColor, "sold Out"),
               ],
             ),
-      
-      );
+            const SizedBox(height: 20), // Space between the row and the container
+            const CustomDivider(text: "CHOOSE SEATS"),
+            const SizedBox(height: 18), 
+            // COUNTER OF TICKETS
+            const CompleteTicketCounter(),
+            Container(
+              alignment: Alignment.center,
+              width: 180,
+              height: 55,
+              child: Text(
+                'number of tickets is limited to 10 tickets per customer',
+                style: ThemeStylesSettings.secondaryText,
+                textAlign: TextAlign.center
+              ),
+            ),
+            const SeatNumberContainer(seatNumbers: ["11A", "11B", "12G"]),
+            const SizedBox(height: 10),
+            const CustomDivider(text: "INVOICE"),
+            // Additional space to allow for scrolling past the invoice section
+            const SizedBox(height: 10),
+            InvoiceTickets(section: Section(
+              id: 1, 
+              eventId: 0, 
+              name: "Dance floor", 
+              maxCapacity: 3) , seats: [ Seat(
+              id: 1,
+              sectionId: 101,
+              number: "11A",
+              status: "available",
+              price: 489.0,
+                ),Seat(
+                  id: 2,
+                  sectionId: 101,
+                  number: "11B",
+                  status: "sold",
+                  price: 879.0,
+                ),
+                Seat(
+                  id: 3,
+                  sectionId: 101,
+                  number: "12G",
+                  status: "available",
+                  price: 879.0,
+                ),
+                
+                ],),
+              ],
+            ),
+          ),
+        );
       }
 
   // Helper method to build the status indicator
@@ -89,5 +121,6 @@ class SelectSeatsScreen extends StatelessWidget {
     );
   }
 }
+
 
 

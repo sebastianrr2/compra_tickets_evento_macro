@@ -63,9 +63,6 @@ class ImageCollageWidget extends StatelessWidget {
         return CachedNetworkImage(
           imageUrl: imageUrls[index],
           fit: BoxFit.cover,
-          placeholder: (context, url) => const Center(
-            child: CircularProgressIndicator(),
-          ), // Indicador de carga
           errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
         );
       },
