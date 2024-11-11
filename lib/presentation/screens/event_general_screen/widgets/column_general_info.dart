@@ -27,13 +27,12 @@ class ColumnGeneralInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8.0), // Margen adicional para evitar desbordes
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Parte izquierda: Información del evento
           Expanded(
-            flex: 7, // Ajusta el tamaño al 70%
+            flex: 7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -85,19 +84,24 @@ class ColumnGeneralInfo extends StatelessWidget {
               ],
             ),
           ),
-          // Parte derecha: Imagen usando CachedNetworkImage
           Expanded(
-            flex: 5, // Ajusta el tamaño al 30%
+            flex: 5,
             child: Container(
               constraints: const BoxConstraints(
                 maxHeight: 200,
-                maxWidth: 200, // Altura máxima de la imagen (ajustar según sea necesario)
+                maxWidth: 200,
               ),
-              child: CachedNetworkImage(
-                imageUrl: locationImage,
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
-              ),
+              child: locationImage.startsWith('http') // Verifica si es una URL de red
+                  ? CachedNetworkImage(
+                      imageUrl: locationImage,
+                      fit: BoxFit.cover,
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    )
+                  : Image.asset(
+                      locationImage,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+                    ),
             ),
           ),
         ],

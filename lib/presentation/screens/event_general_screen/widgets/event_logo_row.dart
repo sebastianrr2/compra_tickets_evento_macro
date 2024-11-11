@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EventLogoRow extends StatelessWidget {
   final String logoUrl;
 
-  //Este widget es las lineas doradaas junto al logo del organizador, abajo del AppBar
+  // Este widget es las líneas doradas junto al logo del organizador, debajo del AppBar
   const EventLogoRow({super.key, required this.logoUrl});
 
   @override
@@ -19,16 +19,21 @@ class EventLogoRow extends StatelessWidget {
             margin: const EdgeInsets.only(right: 20), // Espacio a la derecha
             child: const Divider(
               thickness: 2, // Grosor de la línea
-              color: AppTheme.dullGold, 
+              color: AppTheme.dullGold,
             ),
           ),
         ),
-        // Logo del evento con CachedNetworkImage
-        CachedNetworkImage(
-          imageUrl: logoUrl,
+        // Logo del evento con verificación de tipo de imagen
+        SizedBox(
           width: 100, // Ancho del logo
           height: 100, // Alto del logo
-          errorWidget: (context, url, error) => const Icon(Icons.error), // Icono de error si falla
+          child: logoUrl.startsWith('http')
+              ? CachedNetworkImage(
+                  imageUrl: logoUrl,
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error), // Icono de error si falla
+                )
+              : Image.asset(logoUrl, fit: BoxFit.cover),
         ),
         // Línea dorada a la derecha
         Expanded(
@@ -44,5 +49,6 @@ class EventLogoRow extends StatelessWidget {
     );
   }
 }
+
 
 

@@ -10,13 +10,13 @@ class EventsDbDatasource extends EventsDatasource{
   Event demoEvent = Event(
         id: 0,
         name: 'Ultra music festival', // Nombre del evento
-        logo: 'https://i.pinimg.com/originals/2a/2e/a5/2a2ea5fc5819d4b41541f36d21566d8d.png', // URL del logo
+        logo: 'assets/demoImages/EVENT_LOGO_IMAGE.png', // URL del logo
         description: 'The world premier electronic music festival, boasting elite DJs and un paralleled production located in the beautiful city of Miami', // Descripción del evento
         maxCapacity: 5000, // Capacidad máxima del evento
         date: DateTime.now().add(const Duration(days: 30)), // Fecha del evento en 30 días a partir de hoy
         location: 'Bogotá, Colombia', // Ubicación del evento
         host: '@EventCorp', // Anfitrión del evento
-        locationImage: 'https://www.rockymountainrep.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-01-at-11.20.18-AM.png', // Imagen de la ubicación
+        locationImage: 'assets/demoImages/EVENT_IMAGE.png', // Imagen de la ubicación
         gallery: [
           'https://th.bing.com/th/id/R.c651640f76594994ea70721362b90c93?rik=ZQYQ5hUOSAjFiA&pid=ImgRaw&r=0',
           'https://th.bing.com/th/id/OIP.0BSL71ZSqCFIQSDgCYMJ8gHaE7?rs=1&pid=ImgDetMain',
