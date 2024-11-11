@@ -22,6 +22,8 @@ class AppTheme {
   static const Color white                  = Color.fromARGB(255, 255, 255, 255);
   static const Color black                  = Color.fromARGB(255, 0, 0, 0);
   static const Color divider                = Color(0XFF312E2D);
+  static const Color addCardFormLetter      = Color(0x00808080);
+  static const Color addCardForm            = Color(0x00282828);   
 
   /* Paleta de colores Map */
   static const Color trendingWeeblyOrange = Color(0XFFFF9A00);

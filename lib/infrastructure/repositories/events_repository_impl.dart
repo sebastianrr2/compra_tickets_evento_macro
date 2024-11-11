@@ -13,19 +13,16 @@ class EventsRespositoryImpl extends EventRepository{
 
   @override
   Future<List<Event>> getAllEvents() {
-    // TODO: implement getAllEvents with API or DB
     return datasource.getEvents();
   }
 
   @override
   Future<Event> getEventById(int id) {
-    // TODO: implement getEventById with API or DB
     return datasource.getEventById(id);
   }
 
   @override
    Future<Event> getEventGeneralInfo(int id) {
-    // TODO: implement getEventGeneralInfo
     return datasource.getEventGeneralInfo(id);
   }
   

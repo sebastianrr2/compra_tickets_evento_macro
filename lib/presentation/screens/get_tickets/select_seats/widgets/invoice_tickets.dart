@@ -111,7 +111,6 @@ Widget build(BuildContext context) {
             ],
           ),
         ),
-      const GoToPayButton()
     ],
   );
 }

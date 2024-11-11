@@ -1,6 +1,7 @@
 import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
 import 'package:compra_tickets_evento_macro/domain/entities/section.dart';
 import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/complete_ticket_counter.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/go_to_pay_button.dart';
 import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/invoice_tickets.dart';
 import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/seat_number_container.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
@@ -94,9 +95,9 @@ class SelectSeatsScreen extends StatelessWidget {
                   number: "12G",
                   status: "available",
                   price: 879.0,
-                ),
-                
-                ],),
+                )]),
+            const SizedBox(height: 10),    
+            const GoToPayButton()
               ],
             ),
           ),

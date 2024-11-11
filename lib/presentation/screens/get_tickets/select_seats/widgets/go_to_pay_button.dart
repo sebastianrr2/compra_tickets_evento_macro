@@ -1,3 +1,5 @@
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/widgets/payment_method_pop_up.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/widgets/hero_dialog_route_pop_up.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +13,14 @@ class GoToPayButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       child: InkWell(
         onTap: () {
-      // Aquí colocas la lógica para el evento al hacer clic, como navegar a otra pantalla o realizar una acción
+          // Navegación para mostrar el popup
+          Navigator.of(context).push(
+            HeroDialogRoute(
+              builder: (context) {
+                return const PaymentMethodPopUp();
+              },
+            ),
+          );
         },
         borderRadius: BorderRadius.circular(20), // Asegúrate de que el borde coincida con el del contenedor
         child: Container(

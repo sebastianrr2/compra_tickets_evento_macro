@@ -8,6 +8,9 @@ class PaymentCard {
   final String fullName;
   final int cvv;
   final String expiryDate;
+  final int color;
+
+  bool isActive;
 
 
 
@@ -17,5 +20,7 @@ class PaymentCard {
     required this.fullName, 
     required this.cvv, 
     required this.expiryDate, 
+    required this.color,
+    this.isActive = false
   });
 }
