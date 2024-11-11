@@ -1,22 +1,59 @@
-import 'package:compra_tickets_evento_macro/presentation/providers/payment_card_provider.dart';
 import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/widgets/cards_list_view.dart';
+import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
-class PaymentMethodPopUp extends StatelessWidget {
+class PaymentMethodPopUp extends StatefulWidget {
   final String _heroPaymentMethodCard = 'payment-method-card-hero';
 
   const PaymentMethodPopUp({super.key});
+
+  @override
+  State<PaymentMethodPopUp> createState() => _PaymentMethodPopUpState();
+}
+
+class _PaymentMethodPopUpState extends State<PaymentMethodPopUp> {
+  final LocalAuthentication auth = LocalAuthentication();
+  bool isAuthenticating = false;
+  bool paymentSuccessful = false;
+
+  Future<void> authenticateAndPay() async {
+    try {
+      final authenticated = await auth.authenticate(
+        localizedReason: 'Authenticate to complete the payment',
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
+      );
+
+      if (!mounted) return;
+
+      if (authenticated) {
+        setState(() {
+          paymentSuccessful = true;
+        });
+
+        // Mostrar el mensaje de éxito por unos segundos y luego volver al estado inicial
+        await Future.delayed(const Duration(seconds: 3));
+        setState(() {
+          paymentSuccessful = false;
+        });
+      }
+    } on PlatformException catch (e) {
+      print("Authentication error: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Hero(
-        tag: _heroPaymentMethodCard,
+        tag: widget._heroPaymentMethodCard,
         child: Material(
           color: Colors.transparent,
           child: Container(
@@ -30,17 +67,11 @@ class PaymentMethodPopUp extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 10),
-                  Text(
-                    "PAYMENT METHOD",
-                    style: ThemeStylesSettings.primaryTitleWhite,
-                  ),
+                  Text("PAYMENT METHOD", style: ThemeStylesSettings.primaryTitleWhite),
                   const SizedBox(height: 10),
-                  const Divider(color: AppTheme.jet, thickness: 5, indent: 0, endIndent: 0, height: 0,),
-                  
-                  // PaymentMethodList - ajustado para no tener espacio
+                  const Divider(color: AppTheme.jet, thickness: 5, height: 0,),
                   const PaymentMethodList(),
                   
-                  // Botón de añadir nuevo método de pago - sin espacio con el Divider
                   InkWell(
                     onTap: () {
                       context.push("/form_input_card_payment_method");
@@ -58,12 +89,11 @@ class PaymentMethodPopUp extends StatelessWidget {
                     ),
                   ),
                   
-                  const Divider(color: AppTheme.jet, thickness: 5, indent: 0, endIndent: 0, height: 0,),
+                  const Divider(color: AppTheme.jet, thickness: 5, height: 0),
                   
-                  // Botón de "PAGAR" con InkWell
                   InkWell(
                     onTap: () {
-                      // Acción para proceder con el pago
+                      authenticateAndPay();
                     },
                     child: Container(
                       width: double.infinity,
@@ -75,18 +105,27 @@ class PaymentMethodPopUp extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "PAGAR",
-                            style: ThemeStylesSettings.primaryTitleWhite,
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            color: AppTheme.white,
-                          ),
+                          Text("PAGAR", style: ThemeStylesSettings.primaryTitleWhite),
+                          const Icon(Icons.arrow_forward_ios, color: AppTheme.white),
                         ],
                       ),
                     ),
                   ),
+                  if (paymentSuccessful) ...[
+                    const SizedBox(height: 20),
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.check_circle, size: 80, color: AppTheme.dullGold),
+                        SizedBox(height: 10),
+                        Text(
+                          'Payment Successful',
+                          style: TextStyle(color: AppTheme.dullGold, fontSize: 20),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                 ],
               ),
             ),
@@ -96,5 +135,6 @@ class PaymentMethodPopUp extends StatelessWidget {
     );
   }
 }
+
 
 
