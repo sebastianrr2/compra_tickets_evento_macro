@@ -53,7 +53,7 @@ class SectionsDbDatasource extends SectionsDatasource {
   Future<String> getImageLocationSections() async {
     // Lógica para buscar la imagen que representan las secciones
     await Future.delayed(const Duration(milliseconds: 5)); 
-    String imagePath = 'assets/demoImages/SECTION_IMAGE.png'; // Ajusta la extensión según tu imagen
+    String imagePath = 'assets/demoImages/SECTION_IMAGE.png'; 
     
     // Verifica que la imagen se carga correctamente
     try {

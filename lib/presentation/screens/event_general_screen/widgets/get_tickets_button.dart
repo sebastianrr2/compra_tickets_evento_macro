@@ -5,6 +5,7 @@ class GetTicketsButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const GetTicketsButton({super.key, required this.onPressed});
+  //Boton amarillo de get tickets
 
   @override
   Widget build(BuildContext context) {

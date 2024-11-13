@@ -70,7 +70,8 @@ class _PaymentMethodPopUpState extends State<PaymentMethodPopUp> {
                   Text("PAYMENT METHOD", style: ThemeStylesSettings.primaryTitleWhite),
                   const SizedBox(height: 10),
                   const Divider(color: AppTheme.jet, thickness: 5, height: 0,),
-                  const PaymentMethodList(),
+                  //Lista que despliega la targetas guardadas previamente
+                  const PaymentMethodCardList(),
                   
                   InkWell(
                     onTap: () {

@@ -22,7 +22,7 @@ class GoToPayButton extends StatelessWidget {
             ),
           );
         },
-        borderRadius: BorderRadius.circular(20), // Asegúrate de que el borde coincida con el del contenedor
+        borderRadius: BorderRadius.circular(20), 
         child: Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       decoration: BoxDecoration(

@@ -5,6 +5,9 @@ import 'package:intl/intl.dart';
 import '../../../theme/theme.dart';
 
 class ColumnGeneralInfo extends StatelessWidget {
+
+  //Clase que da la informacion general del evento que consta de varias partes, que son atributos 
+  //del mismo evento
   final int maxCapacity;
   final DateTime date;
   final String location;

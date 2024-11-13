@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+//Esta clase se usa para dirigir el movieminto del pop up de las targetas
+
 class HeroDialogRoute<T> extends PageRoute<T> {
   HeroDialogRoute({
     required WidgetBuilder builder,

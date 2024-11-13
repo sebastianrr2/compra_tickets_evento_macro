@@ -3,8 +3,8 @@ import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PaymentMethodList extends StatelessWidget {
-  const PaymentMethodList({super.key});
+class PaymentMethodCardList extends StatelessWidget {
+  const PaymentMethodCardList({super.key});
 
   @override
   Widget build(BuildContext context) {

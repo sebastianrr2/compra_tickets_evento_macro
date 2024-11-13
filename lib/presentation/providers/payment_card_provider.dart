@@ -2,7 +2,7 @@ import 'package:compra_tickets_evento_macro/domain/entities/payment_card.dart';
 import 'package:compra_tickets_evento_macro/infrastructure/repositories/cards_repository_impl.dart';
 import 'package:flutter/material.dart';
 
-// Assuming Card and CardDatasource are defined as in previous examples
+
 class CardProvider with ChangeNotifier {
   final CardsRepositoryImpl cardRepository;
 
@@ -20,7 +20,6 @@ class CardProvider with ChangeNotifier {
 
   Future<PaymentCard?> readCard(int id) async {
     final card = await cardRepository.readCard(id);
-    // You can handle the card as needed, e.g., return it, update a selected card state, etc.
     return card;
   }
 

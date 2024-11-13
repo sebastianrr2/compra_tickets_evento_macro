@@ -65,12 +65,14 @@ class EventGeneralScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: ThemeStylesSettings.secondaryText
                         ),
-                        const SizedBox(height: 16), // Espacio entre la descripción y el botón
+                        const SizedBox(height: 16), 
+                        //Boton amarillo get tickets
                         GetTicketsButton(
                           onPressed: () { context.push('/event_general_screen/$eventId/select_section');
                           },
                         ),
                         const SizedBox(height: 10),
+                        //Recomendaciones al usuario
                         Recommendations(recommendationsMap: recommendationsMap),
                         const SizedBox(height: 10),
                         // Aquí agregamos la nueva columna con la información general del evento

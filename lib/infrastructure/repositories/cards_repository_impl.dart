@@ -13,22 +13,18 @@ class CardsRepositoryImpl {
     await datasource.createCard(card);
   }
 
-  
   Future<PaymentCard?> readCard(int id) async {
     return await datasource.readCard(id);
   }
 
-
   Future<void> updateCard(PaymentCard card) async {
     await datasource.updateCard(card);
   }
-
-  
+ 
   Future<void> deleteCard(int id) async {
     await datasource.deleteCard(id);
   }
 
- 
   Future<List<PaymentCard>> fetchAllCards() async {
     return await datasource.fetchAllCards();
   }

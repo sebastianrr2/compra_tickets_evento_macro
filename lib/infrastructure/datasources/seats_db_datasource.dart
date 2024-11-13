@@ -4,7 +4,7 @@ import 'package:compra_tickets_evento_macro/domain/datasources/seats_datasource.
 import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
 
 class SeatsDbDatasource extends SeatsDatasource {
-  // Suponiendo que tienes una lista global de asientos
+  //lista global de asientos
 late List<Seat> demoSeats = [
         // Palco Garrix
       Seat(id: 0, sectionId: 0, number: "A1", price: 120.0, status: "occupied"),
