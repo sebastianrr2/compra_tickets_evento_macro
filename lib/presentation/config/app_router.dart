@@ -1,7 +1,7 @@
 import 'package:compra_tickets_evento_macro/presentation/screens/event_general_screen/event_general_screen.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/form_input_payment_method_card.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/select_seats_screen.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section/select_section_screen.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/add_card_screen/form_input_payment_method_card.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/select_seats_screen.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section_screen/select_section_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
