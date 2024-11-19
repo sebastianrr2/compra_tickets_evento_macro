@@ -1,9 +1,9 @@
 import 'package:compra_tickets_evento_macro/domain/entities/seat.dart';
 import 'package:compra_tickets_evento_macro/domain/entities/section.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/complete_ticket_counter.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/go_to_pay_button.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/invoice_tickets.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/seat_number_container.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/widgets/complete_ticket_counter.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/widgets/go_to_pay_button.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/widgets/invoice_tickets.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/widgets/seat_number_container.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/custom_appbar.dart';

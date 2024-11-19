@@ -1,5 +1,5 @@
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/widgets/payment_method_pop_up.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/widgets/hero_dialog_route_pop_up.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/payment_method_pop_up.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/payment_method_card/animations/hero_dialog_route_pop_up.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';

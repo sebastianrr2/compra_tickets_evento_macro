@@ -1,4 +1,4 @@
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/widgets/ticket_counter.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/widgets/ticket_counter.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';

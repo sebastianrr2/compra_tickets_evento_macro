@@ -1,6 +1,6 @@
 import 'package:compra_tickets_evento_macro/presentation/providers/section_provider.dart';
 import 'package:compra_tickets_evento_macro/presentation/widgets/custom_appbar.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section/widgets/list_view_sections.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_section_screen/widgets/list_view_sections.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

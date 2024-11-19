@@ -1,5 +1,5 @@
 import 'package:compra_tickets_evento_macro/presentation/providers/section_provider.dart';
-import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats/select_seats_screen.dart';
+import 'package:compra_tickets_evento_macro/presentation/screens/get_tickets/select_seats_screen/select_seats_screen.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/app_theme.dart';
 import 'package:compra_tickets_evento_macro/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
